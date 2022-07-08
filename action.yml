@@ -1,0 +1,42 @@
+name: 'mender-artifact-uploader-action'
+description: 'A very slim action that uses basic auth to upload your mender artifact to a managed mender server.'
+branding:
+  icon: 'upload-cloud'  
+  color: 'green'
+inputs:
+  mender-device-type:
+    description: 'Target device type'
+    required: true
+  mender-device-release:
+    description: 'Release name'
+    required: true
+  mender-device-update-module:
+    description: 'Update module name on the device'
+    required: true
+  mender-device-update-module-files:
+    description: 'Files to be executed against the given update module'
+    required: true
+  mender-device-group:
+    description: 'Targeted device group for this artifact'
+    required: true
+  mender-auth-username:
+    description: 'Mender server basic auth username'
+    required: true
+  mender-auth-password:
+    description: 'Mender server basic auth password'
+    required: true
+  mender-server-url:
+    description: 'Mender server url'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.mender-device-type }}
+    - ${{ inputs.mender-device-release }}
+    - ${{ inputs.mender-device-update-module }}
+    - ${{ inputs.mender-device-update-module-files }}
+    - ${{ inputs.mender-device-group }}
+    - ${{ inputs.mender-auth-username }}
+    - ${{ inputs.mender-auth-password }}
+    - ${{ inputs.mender-server-url }}
