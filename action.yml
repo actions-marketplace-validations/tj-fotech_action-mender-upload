@@ -1,4 +1,4 @@
-name: 'mender-artifact-uploader-action'
+name: 'fotech-mender-artifact-uploader-action'
 description: 'A very slim action that uses basic auth to upload your mender artifact to a managed mender server.'
 branding:
   icon: 'upload-cloud'  
